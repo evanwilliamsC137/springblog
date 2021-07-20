@@ -1,10 +1,7 @@
 package com.codeup.springblog.controllers;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 public class PostController {
 
@@ -20,17 +17,32 @@ public class PostController {
         return "/posts/show";
     }
 
-
-    @GetMapping("/posts/create")
+//    Request mapping for explicit path and method
+    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
     @ResponseBody
     public String createGet(){
         return "Form for create a blog post";
     }
 
-    @PostMapping("/posts/create")
+    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
     @ResponseBody
-    public String create(){
-        return "Create post here";
+    public String createPost(){
+        return "Form for create a blog post";
     }
+
+
+
+//    Get and Post mapping direct annotation
+//    @GetMapping("/posts/create")
+//    @ResponseBody
+//    public String createGet(){
+//        return "Form for create a blog post";
+//    }
+//
+//    @PostMapping("/posts/create")
+//    @ResponseBody
+//    public String createPost(){
+//        return "Create post here";
+//    }
 
 }
