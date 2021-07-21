@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Parks!</title>
+</head>
+<body>
+
+<!--Loop through the parks and list each one-->
+<ul th:each="park : ${parks}">
+    <th:block th:unless="${parks.isEmpty()}">
+        <li th:text="${park.getName()}"></li>
+    </th:block>
+</ul>
+</body>
+</html>

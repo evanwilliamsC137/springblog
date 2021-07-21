@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Home</title>
+    <th:block th:include="partials/styles.html :: styles"></th:block>
+
+    <div th:replace="partials/navbar.html :: navbar">
+    </div>
+</head>
+<body>
+
+<h1 class="bg-primary">This is the home page</h1>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<head th:replace="partials/header.html :: head"></head>-->
+
+<body>
+<!--<div th:replace="partials/navbar.html :: navbar"></div>-->
+
+<!--attributes added in controller-->
+<p>You guessed: </p><span th:text="${n}"></span>
+<p>Dice has: </p><span th:text="${roll}"></span>
+
+<!--attributes passed from controller and used in if statement as boolean-->
+<div th:if="${guessCorrect}">
+    You guessed correctly!
+</div>
+<div th:if="${!guessCorrect}">
+    Incorrect!
+</div>
+
+<!--<div th:replace="partials/footer.html :: footer"></div>-->
+
+</body>
+</html>
