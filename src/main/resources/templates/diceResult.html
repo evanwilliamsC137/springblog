@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<head th:replace="partials/header.html :: head"></head>-->
+<head th:replace="partials/header.html :: head"></head>
+<th:block th:include="partials/styles.html :: styles"></th:block>
 
 <body>
-<!--<div th:replace="partials/navbar.html :: navbar"></div>-->
+<div th:replace="partials/navbar.html :: navbar"></div>
 
 <!--attributes added in controller-->
 <p>You guessed: </p><span th:text="${n}"></span>
@@ -17,7 +18,8 @@
     Incorrect!
 </div>
 
-<!--<div th:replace="partials/footer.html :: footer"></div>-->
+<div th:replace="partials/footer.html :: footer"></div>
+<th:block th:include="partials/scripts.html  :: bootstrap"></th:block>
 
 </body>
 </html>

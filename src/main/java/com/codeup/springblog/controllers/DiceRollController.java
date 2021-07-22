@@ -25,7 +25,7 @@ public class DiceRollController {
             guessCorrect = true;
         }
 
-//        add attribute with model to pass data
+//        add attribute with model to pass data to view
         model.addAttribute("roll", roll);
         model.addAttribute("n", n);
         model.addAttribute("guessCorrect", guessCorrect);
@@ -34,8 +34,7 @@ public class DiceRollController {
     }
 
     public int dice() {
-        int n = 6;
-        int roll = (int) (Math.random() * n) + 1;
+        int roll = (int) (Math.random() * 6) + 1;
         return roll;
     }
 }

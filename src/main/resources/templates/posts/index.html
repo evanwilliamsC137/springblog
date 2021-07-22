@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Index</title>
+    <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
 <body>
+<header th:replace="partials/header.html :: header"></header>
+<div th:replace="partials/navbar.html :: navbar"></div>
+
+
     <ul th:each="post: ${posts}">
         <li th:text="${post.getTitle()}"></li>
         <li th:text="${post.getBody()}"></li>
     </ul>
+
+
+<div th:replace="partials/footer.html :: footer"></div>
+<th:block th:include="partials/scripts.html  :: bootstrap"></th:block>
 </body>
 </html>
