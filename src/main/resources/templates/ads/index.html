@@ -10,13 +10,10 @@
 <div th:replace="partials/navbar.html :: navbar"></div>
 
 
-    <ul th:each="post: ${posts}">
-        <li th:text="${post.getTitle()}"></li>
-        <li th:text="${post.getBody()}"></li>
-        <form action="/posts/delete" method="post">
-            <button type="submit" th:value="${post.}" name="deletePost">Delete</button>
-        </form>
-    </ul>
+<ul th:each="ad: ${ads}">
+    <li th:text="${ad.getTitle()}"></li>
+    <li th:text="${ad.getDescription()}"></li>
+</ul>
 
 
 <div th:replace="partials/footer.html :: footer"></div>

@@ -1,8 +1,24 @@
 package com.codeup.springblog.models;
 
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")
 public class Post {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+    @Column(nullable = false,length = 155)
     private String title;
+
+    @Column(nullable = false)
     private String body;
+
 
     public Post() {
     }

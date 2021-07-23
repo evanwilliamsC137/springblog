@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Index</title>
+    <title>Show</title>
     <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
 <body>
@@ -10,13 +10,15 @@
 <div th:replace="partials/navbar.html :: navbar"></div>
 
 
-    <ul th:each="post: ${posts}">
-        <li th:text="${post.getTitle()}"></li>
-        <li th:text="${post.getBody()}"></li>
-        <form action="/posts/delete" method="post">
-            <button type="submit" th:value="${post.}" name="deletePost">Delete</button>
-        </form>
-    </ul>
+<!--A single post from post controller-->
+
+
+<h1>The post you selected: </h1>
+
+<div th:if="${ad}">
+    <h2 th:text="${ad.getTitle()}"></h2>
+    <p th:text="${ad.getDescription()}"></p>
+</div>
 
 
 <div th:replace="partials/footer.html :: footer"></div>
