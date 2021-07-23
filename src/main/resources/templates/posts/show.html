@@ -18,6 +18,12 @@
 <div th:if="${post}">
     <h2 th:text="${post.getTitle()}"></h2>
     <p th:text="${post.getBody()}"></p>
+    <form action="/posts/delete" method="post">
+        <button class="card-link" type="submit" th:value="${post.id}" name="deletePost">Delete</button>
+    </form>
+    <form action="/posts/edit" method="get">
+        <button class="card-link" type="submit" th:value="${post.id}" name="editPost">Edit</button>
+    </form>
 </div>
 
 

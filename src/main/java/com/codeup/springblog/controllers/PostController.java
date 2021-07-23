@@ -2,6 +2,7 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 import com.codeup.springblog.models.PostRepository;
+import com.codeup.springblog.models.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,21 +14,19 @@ import java.util.List;
 public class PostController {
 
     private final PostRepository postDao;
+    private final UserRepository usersDao;
 
-    public PostController(PostRepository postDao){
+    public PostController(PostRepository postDao, UserRepository usersDao){
         this.postDao = postDao;
+        this.usersDao = usersDao;
     }
 
     @PostMapping ("/posts/edit")
-    public String save(@RequestParam("postId") long postId, @RequestParam("title") String title, @RequestParam("body") String body){
+    public String editPost(@RequestParam("postId") long postId, @RequestParam("title") String title, @RequestParam("body") String body){
         Post post = new Post(postId,title,body);
         postDao.save(post);
         return "redirect:/posts";
     }
-
-
-
-
 
     @GetMapping("/posts/edit")
     public String editForm(@RequestParam("editPost") long id, Model model){
@@ -41,15 +40,6 @@ public class PostController {
         return "redirect:/posts";
     }
 
-
-
-    public List<Post> posts = new ArrayList<>(){{
-        add( new Post("Title 1", "Stuff for body 1"));
-        add(new Post("2nd title", "Stuff for 2nd body."));
-    }};
-
-
-
 //    show an index of all the posts
     @GetMapping("/posts")
     public String posts(Model model) {
@@ -62,26 +52,10 @@ public class PostController {
 //  Show one single post
     @GetMapping("/posts/{id}")
     public String singlePost(@PathVariable long id, Model model){
-        Post post = new Post("Title","body for the post");
-        model.addAttribute("post",post);
+        model.addAttribute("post",postDao.findById(id));
 
         return "posts/show";
     }
-
-//    Request mapping for explicit path and method
-//    @RequestMapping(path = "/posts/create", method = RequestMethod.GET)
-//    @ResponseBody
-//    public String createForm(){
-//        return "Form for create a blog post";
-//    }
-//
-//    @RequestMapping(path = "/posts/create", method = RequestMethod.POST)
-//    @ResponseBody
-//    public String createPost(){
-//        return "Form for create a blog post";
-//    }
-
-
 
 //    Get and Post mapping direct annotation
     @GetMapping("/posts/create")
@@ -95,5 +69,23 @@ public class PostController {
     public String createPost(){
         return "Create post here";
     }
+
+//    Walkthrough
+//@PostMapping ("/posts/edit/{id}")
+//public String editPost(@RequestParam("postId") long postId, @RequestParam("title") String title, @RequestParam("body") String body){
+//    Post post = postDao.getById(postId);
+//    post.setId(postId);
+//    post.setTitle(title);
+//    post.setBody(body);
+//    postDao.save(post);
+//    return "redirect:/posts";
+//}
+
+//    Walkthrough
+//    @GetMapping("/posts/edit")
+//    public String editForm2(@PathVariable long id, Model model){
+//        model.addAttribute("post", postDao.findById(id));
+//        return "posts/edit";
+//    }
 
 }

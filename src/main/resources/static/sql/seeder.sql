@@ -7,3 +7,8 @@ VALUES (1, 'Greg likes potato chips', 'He sure does look at him go!'),
        (4, 'Test post', 'oooooo weeeee'),
        (5, 'I''m Mr. Meseeks', 'Look at meeee'),
        (6, 'Teststst', 'bzzzzzzzt');
+
+
+
+# INSERT INTO users (id,username,email,password)
+# VALUES
