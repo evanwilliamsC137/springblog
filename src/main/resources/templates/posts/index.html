@@ -14,7 +14,10 @@
         <li th:text="${post.getTitle()}"></li>
         <li th:text="${post.getBody()}"></li>
         <form action="/posts/delete" method="post">
-            <button type="submit" th:value="${post.}" name="deletePost">Delete</button>
+            <button class="card-link" type="submit" th:value="${post.id}" name="deletePost">Delete</button>
+        </form>
+        <form action="/posts/edit" method="get">
+            <button class="card-link" type="submit" th:value="${post.id}" name="editPost">Edit</button>
         </form>
     </ul>
 

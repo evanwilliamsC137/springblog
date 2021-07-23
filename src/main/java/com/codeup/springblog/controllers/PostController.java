@@ -18,17 +18,28 @@ public class PostController {
         this.postDao = postDao;
     }
 
-    @PostMapping("/posts/delete")
-    public String deletePost(long id) {
-        Post deletePost = new Post();
-        postDao.delete(deletePost);
-        return "posts/index";
+    @PostMapping ("/posts/edit")
+    public String save(@RequestParam("postId") long postId, @RequestParam("title") String title, @RequestParam("body") String body){
+        Post post = new Post(postId,title,body);
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
-//    @PostMapping("posts/{id}/edit")
-//    public String editPost(@PathVariable long id,Model model) {
-//        Post editPost = new Post();
-//    }
+
+
+
+
+    @GetMapping("/posts/edit")
+    public String editForm(@RequestParam("editPost") long id, Model model){
+        model.addAttribute("post", postDao.findById(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/delete")
+    public String deletePost(@RequestParam(name = "deletePost") long id){
+        postDao.deleteById(id);
+        return "redirect:/posts";
+    }
 
 
 
@@ -43,10 +54,11 @@ public class PostController {
     @GetMapping("/posts")
     public String posts(Model model) {
 
-        model.addAttribute("posts",posts);
+        model.addAttribute("posts",postDao.findAll());
 
         return "posts/index";
     }
+
 //  Show one single post
     @GetMapping("/posts/{id}")
     public String singlePost(@PathVariable long id, Model model){
