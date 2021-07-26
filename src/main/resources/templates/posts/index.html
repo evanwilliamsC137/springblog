@@ -11,9 +11,9 @@
 
 
     <ul th:each="post: ${posts}">
-        <li th:text="${post.getTitle()}"></li>
-        <li th:text="${post.getBody()}"></li>
-
+        <li th:text="${post.title}"></li>
+        <li th:text="${post.body}"></li>
+        <li th:text="${post.user.email}"></li>
     </ul>
 
 

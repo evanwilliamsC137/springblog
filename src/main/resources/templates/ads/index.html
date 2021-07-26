@@ -13,6 +13,7 @@
 <ul th:each="ad: ${ads}">
     <li th:text="${ad.getTitle()}"></li>
     <li th:text="${ad.getDescription()}"></li>
+    <li th:text="${ad.user.username}"></li>
 </ul>
 
 

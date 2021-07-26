@@ -18,6 +18,13 @@
 <div th:if="${ad}">
     <h2 th:text="${ad.getTitle()}"></h2>
     <p th:text="${ad.getDescription()}"></p>
+    <p th:text="${ad.user.username}"></p>
+    <div>
+        <span th:each="cat : ${ad.categories}">
+            <span th:text="${cat.name}"></span>
+        </span>
+    </div>
+
 </div>
 
 
