@@ -24,14 +24,14 @@ public class PostController {
 
     @PostMapping ("/posts/{id}/edit")
     public String save(@PathVariable long id, @ModelAttribute Post post){
-        return createPost(postDao.getById(id));
+        return createPost(post);
     }
 
     @GetMapping("/posts/{id}/edit")
     public String editForm(@PathVariable long id, Model model){
         Post postToEdit = postDao.findById(id);
         model.addAttribute("post", postToEdit);
-        return "posts/create";
+        return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/delete")
