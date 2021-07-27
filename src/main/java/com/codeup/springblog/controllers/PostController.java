@@ -24,21 +24,19 @@ public class PostController {
 
     @PostMapping ("/posts/{id}/edit")
     public String save(@PathVariable long id, @ModelAttribute Post post){
-        post.setUser(usersDao.getById(1L));
-        postDao.save(post);
-        return "redirect:/posts";
+        return createPost(postDao.getById(id));
     }
 
     @GetMapping("/posts/{id}/edit")
     public String editForm(@PathVariable long id, Model model){
         Post postToEdit = postDao.findById(id);
         model.addAttribute("post", postToEdit);
-        return "posts/edit";
+        return "posts/create";
     }
 
-    @PostMapping("/posts/delete")
-    public String deletePost(@RequestParam(name = "deletePost") long id){
-        postDao.deleteById(id);
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id){
+        postDao.delete(postDao.getById(id));
         return "redirect:/posts";
     }
 
