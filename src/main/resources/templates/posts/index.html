@@ -5,14 +5,13 @@
     <title>Index</title>
     <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
-<body>
+<body class="container">
 <header th:replace="partials/header.html :: header"></header>
 <div th:replace="partials/navbar.html :: navbar"></div>
 
-
-    <ul th:each="post: ${posts}">
-        <li th:text="${post.title}"></li>
-        <li th:text="${post.body}"></li>
+    <ul class="post" th:each="post: ${posts}">
+        <li class="post-title" th:text="${post.title}"></li>
+        <li class="post-body" th:text="${post.body}"></li>
         <li th:text="${post.user.email}"></li>
     </ul>
 

@@ -7,13 +7,11 @@
 <body>
 <h1>Edit post</h1>
 <div>
-    <form action="/posts/edit" method="post">
-        <label for="title">Title</label>
-        <input type="hidden" name="postId" th:value="${post.id}">
-        <input type="text" id="title" name="title" th:value="${post.title}">
-        <label for="body">Body</label>
-        <input type="textarea" id="body" name="body" th:value="${post.body}">
-        <button type="submit">Submit edit</button>
+    <form th:action="@{/posts/{id}/edit(id=${post.id})}" th:method="post" th:object="${post}">
+        <label for="title">Title</label><input type="text" id="title" name="title" th:field="*{title}" th:value="*{title}">
+        <label for="body">Body</label><input type="text" id="body" name="body" th:field="*{body}" th:value="*{body}">
+
+        <button type="submit">Submit Changes</button>
     </form>
     <script th:include="partials/scripts.html  :: bootstrap"></script>
 </div>

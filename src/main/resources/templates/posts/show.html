@@ -20,10 +20,10 @@
     <p th:text="${post.getBody()}"></p>
     <p th:text="${post.user.email}"></p>
 
-    <form action="/posts/delete" method="post">
+    <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">
         <button class="card-link" type="submit" th:value="${post.id}" name="deletePost">Delete</button>
     </form>
-    <form action="/posts/edit" method="get">
+    <form th:action="@{/posts/{id}/edit(id = ${post.id})}" method="get">
         <button class="card-link" type="submit" th:value="${post.id}" name="editPost">Edit</button>
     </form>
 </div>
