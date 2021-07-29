@@ -9,7 +9,7 @@ TRUNCATE springblog_db.users;
 USE springblog_db;
 
 INSERT INTO springblog_db.users (username, email, password)
-values ('admin','admin@email.com','password');
+values ('admin','admin@email.com','$2a$10$MXtLn9vHHldC/PR0QS5wwuJNs3sWlCxe5k4pEw5/ulHwgTMSYWBHm');
 
 INSERT INTO springblog_db.ads (description, title, user_id)
 VALUES ('Lorem ipsum dolor sit amet, ex pericula persequeris eam, quo quem saperet cu. Ne epicurei periculis nec. Nostrud fastidii eu vim.',

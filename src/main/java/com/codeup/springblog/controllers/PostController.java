@@ -1,16 +1,17 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
-import com.codeup.springblog.models.PostRepository;
 import com.codeup.springblog.models.User;
-import com.codeup.springblog.models.UserRepository;
+import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
 import com.codeup.springblog.services.EmailService;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.thymeleaf.exceptions.TemplateInputException;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.EntityNotFoundException;
 
 @Controller
 public class PostController {
@@ -32,9 +33,14 @@ public class PostController {
 
     @GetMapping("/posts/{id}/edit")
     public String editForm(@PathVariable long id, Model model){
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Post postToEdit = postDao.findById(id);
-        model.addAttribute("post", postToEdit);
-        return "posts/edit";
+        if (currentUser.getId() == postToEdit.getUser().getId()) {
+            model.addAttribute("post", postToEdit);
+            return "posts/edit";
+        }else {
+            return "redirect:/posts/" + id;
+        }
     }
 
     @PostMapping("/posts/{id}/delete")
@@ -52,9 +58,25 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String singlePost(@PathVariable long id, Model model){
-        model.addAttribute("post",postDao.findById(id));
+        try {
+            Post post = postDao.findById(id);
+            model.addAttribute("post",post);
+            if (post.getId() == 0) {
+                return "redirect:/posts";
+            }
+            boolean isPostOwner = false;
+            if (SecurityContextHolder.getContext().getAuthentication().getPrincipal() != "anonymousUser") {
+                User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+                isPostOwner = currentUser.getId() == post.getUser().getId();
+            }
+            model.addAttribute("isPostOwner",isPostOwner);
 
-        return "posts/show";
+            return "posts/show";
+        }catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/posts";
+        }
+
     }
 
     @GetMapping("/posts/create")
@@ -65,7 +87,7 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
-        post.setUser(usersDao.getById(1L));
+        post.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
         postDao.save(post);
         emailSvc.prepareAndSend(post,"New Post","New post has been created!");
         return "redirect:/posts";

@@ -1,12 +1,10 @@
 package com.codeup.springblog.controllers;
 import com.codeup.springblog.models.Ad;
-import com.codeup.springblog.models.Post;
-import com.codeup.springblog.models.UserRepository;
-import org.dom4j.rule.Mode;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import com.codeup.springblog.models.AdRepository;
+import com.codeup.springblog.repositories.AdRepository;
 
 @Controller
 class AdController {

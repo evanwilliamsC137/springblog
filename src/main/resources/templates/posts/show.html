@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8"/>
     <title>Show</title>
@@ -20,12 +21,15 @@
     <p th:text="${post.getBody()}"></p>
     <p th:text="${post.user.email}"></p>
 
-    <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post">
-        <button class="card-link" type="submit" th:value="${post.id}" name="deletePost">Delete</button>
-    </form>
-    <form th:action="@{/posts/{id}/edit(id = ${post.id})}" method="get">
-        <button class="card-link" type="submit" th:value="${post.id}" name="editPost">Edit</button>
-    </form>
+    <div th:if="${isPostOwner}">
+        <form th:action="@{/posts/{id}/delete(id = ${post.id})}" method="post" th:object="${post}">
+            <button class="card-link" type="submit" th:value="*{id}" name="deletePost">Delete</button>
+        </form>
+        <form th:action="@{/posts/{id}/edit(id = ${post.id})}" method="get" th:object="${post}">
+            <button class="card-link" type="submit" th:value="*{id}" name="editPost">Edit</button>
+        </form>
+    </div>
+
 </div>
 
 
