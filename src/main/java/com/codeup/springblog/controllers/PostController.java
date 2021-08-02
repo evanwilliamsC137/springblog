@@ -26,9 +26,16 @@ public class PostController {
         this.emailSvc = emailSvc;
     }
 
-    @PostMapping ("/posts/{id}/edit")
-    public String save(@PathVariable long id, @ModelAttribute Post post){
-        return createPost(post);
+    @PostMapping("/posts/{id}/edit")
+    public String postToEdit(@PathVariable long id, @ModelAttribute Post post) {
+//        checks to see if the user is logged in and has authentication
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Post postFromDB = postDao.getById(id);
+        if(user.getId() == postFromDB.getUser().getId()){
+            post.setUser(user);
+            postDao.save(post);
+        }
+        return "redirect:/posts/" + id;
     }
 
     @GetMapping("/posts/{id}/edit")

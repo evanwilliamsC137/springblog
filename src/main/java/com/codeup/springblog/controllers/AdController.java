@@ -49,4 +49,5 @@ class AdController {
         adDao.save(ad);
         return "redirect:/ads";
     }
+
 }

@@ -10,5 +10,7 @@ public interface PostRepository extends JpaRepository<Post,Long> {
 
     void delete(Post post);
     Post save(Post post);
+
+    Post findByTitle(String post_to_be_deleted);
 //    void editById(long id, String title, String body);
 }
