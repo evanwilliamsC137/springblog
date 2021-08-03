@@ -1,0 +1,30 @@
+body{
+    background-color: #050303;
+    padding: 3em;
+}
+
+h1, h2, h3, h4, p, span, a, label, li {
+    color: white;!important;
+}
+
+#jumbo {
+    width: 100%;
+    height: 80px;
+    background: url("galaxy.png") center;
+}
+
+a:link {
+    color: blue;
+}
+a:active {
+    color: #f8f7ec;
+}
+a:hover {
+    color: #daa7ee;
+}
+
+
+
+
+
+

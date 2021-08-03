@@ -122,7 +122,8 @@ public class PostsIntegrationTests {
     @Test
     public void testPostsIndex() throws Exception {
 
-        Post existingPost = postDao.findAll().get(0);
+        List<Post> posts = postDao.findAll();
+        Post existingPost = posts.get(0);
 
         // Makes a Get request to /ads and verifies that we get some of the static text of the ads/index.html template and at least the title from the first Ad is present in the template.
         this.mvc.perform(get("/posts"))

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="eng" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="header">
+    <meta charset="UTF-8">
+    <th:block th:include="partials/scripts.html  :: bootstrap"></th:block>
+    <th:block th:include="partials/styles.html :: styles"></th:block>
+</head>
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div id="jumbo"></div>
+    <ul class="navbar-nav">
+        <li class="nav-item"><h3 class="text-light">Evan's Blog</h3></li>
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li sec:authorize="!isAuthenticated()">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/login}">Log in</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/register}">Register</a>
+            </li>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+            <li class="nav-item"><a class="nav-link" href="/posts/create">Create Post</a></li>
+            <li class="nav-item"><a class="nav-link" href="/posts">View Posts</a></li>
+            <li class="nav-item">
+                <form class="form-inline" th:action="@{/logout}" th:method="post">
+                    <button class="btn-link btn">Logout</button>
+                </form>
+            </li>
+        </li>
+    </ul>
+</nav>
+
+
+
+<footer th:fragment="footer">
+    <hr>
+    <ul>
+        <li>Contact Us</li>
+        <li>Customer Service</li>
+        <li>Partnerships</li>
+        <li>Employment</li>
+    </ul>
+</footer>
+</body>
+</html>

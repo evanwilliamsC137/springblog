@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="partials/header.html :: header">
+<head th:replace="partials/partials.html :: header">
     <title>Log In</title>
-    <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
 <body>
-<nav th:replace="partials/navbar.html :: navbar"></nav>
+<nav th:replace="partials/partials.html :: navbar"></nav>
 <div class="container">
     <h1>Log In</h1>
     <div th:if="${param.error}">
@@ -25,8 +24,6 @@
         </div>
         <input type="submit" class="btn btn-primary btn-block" value="Log In">
     </form>
-
-    <th:block th:include="partials/scripts.html  :: bootstrap"></th:block>
 </div>
 </body>
 </html>

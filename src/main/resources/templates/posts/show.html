@@ -7,8 +7,8 @@
     <th:block th:include="partials/styles.html :: styles"></th:block>
 </head>
 <body>
-<header th:replace="partials/header.html :: header"></header>
-<div th:replace="partials/navbar.html :: navbar"></div>
+<header th:replace="partials/partials.html :: header"></header>
+<div th:replace="partials/partials.html :: navbar"></div>
 
 
 <!--A single post from post controller-->
@@ -33,7 +33,7 @@
 </div>
 
 
-<div th:replace="partials/footer.html :: footer"></div>
-<th:block th:include="partials/scripts.html  :: bootstrap"></th:block>
+<div th:replace="partials/partials.html :: footer"></div>
+
 </body>
 </html>
