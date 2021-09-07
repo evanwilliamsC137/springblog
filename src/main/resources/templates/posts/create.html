@@ -5,10 +5,10 @@
     <head th:replace="partials/partials.html :: header">
     <title>Create a Post</title>
 </head>
-<body>
+<body class="container">
 <div th:replace="partials/partials.html :: navbar"></div>
 
-    <div class="container post">
+    <div class="post">
         <h1>Create your post below:</h1>
         <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
             <input th:field="*{title}" th:value="*{title}" placeholder="Title" />
