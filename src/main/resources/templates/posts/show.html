@@ -4,16 +4,12 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Show</title>
-    <th:block th:include="partials/styles.html :: styles"></th:block>
+    <head th:replace="partials/partials.html :: header">
 </head>
 <body>
-<header th:replace="partials/partials.html :: header"></header>
 <div th:replace="partials/partials.html :: navbar"></div>
 
-
 <!--A single post from post controller-->
-
-
 <h1>The post you selected: </h1>
 
 <div th:if="${post}">
