@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:replace="partials/partials.html :: header">
     <meta charset="UTF-8" />
     <title>Home</title>
-    <head th:replace="partials/partials.html :: header">
-
-    <div th:replace="partials/partials.html :: navbar"></div>
 </head>
 <body>
+<div th:replace="partials/partials.html :: navbar"></div>
 
 <h1>Welcome to my Blog!</h1>
-<p>A place where I can talk about myself and stuff</p>
+<p>A Blog posting application where users can register and post about whatever they want.</p>
+
+<div id="jumbo"></div>
 
 <div th:replace="partials/partials.html :: footer"></div>
 </body>

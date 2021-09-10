@@ -20,8 +20,41 @@ h1, h2, h3, h4, p, span, a, label, li {
 
 #jumbo {
     width: 100%;
-    height: 80px;
+    height: 200px;
     background: url("galaxy.png") center;
+}
+
+.footer {
+    position:fixed;bottom:0;left:auto;right:auto;height:60px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+/* Taller footer on small screens */
+@media (max-width: 567em) {
+    body {
+        margin-bottom: 300px;
+    }
+    .footer {
+        height: 10%;
+    }
+}
+
+
+/* Sticky footer style and color
+-------------------------------------------------- */
+footer {
+    padding-top: 30px;
+    color: #bbb;
+}
+
+footer a {
+    color: #999;
+    text-decoration:none;
 }
 
 a:link {

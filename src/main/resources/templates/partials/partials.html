@@ -16,16 +16,16 @@
         <div class="d-flex h-10 justify-content-between">
             <div class="d-flex h-10 justify-content-around align-items-center">
                 <a class="nav-link" th:href="@{/}">
-                    <button class="btn-hover color-8">Home</button>
+                    <button class="btn btn-hover color-8">Home</button>
                 </a>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/register}">
-                    <button class="btn-hover color-8">Register</button>
+                    <button class="btn btn-hover color-8">Register</button>
                 </a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/posts}">
-                    <button class="btn-hover color-8">All Posts</button>
+                    <button class="btn btn-hover color-8">All Posts</button>
                 </a>
                 <a sec:authorize="isAuthenticated()" th:href="@{/posts/create}">
-                    <button class="btn-hover color-8">Create Post</button>
+                    <button class="btn btn-hover color-8">Create Post</button>
                 </a>
             </div>
             <div class="d-flex h-10 justify-content-end align-items-center">
@@ -34,16 +34,16 @@
                         <div class="d-flex align-items-center b-0">
                             <label for="query"></label>
                             <input class="mx-2 w-3-padding-4" id="query" name="query" placeholder="Find Post" type="text"/>
-                            <button type="submit" value="submit">Search</button>
+                            <button class="btn btn-hover color-8" type="submit" value="submit">Search</button>
                         </div>
                     </form>
                 </div>
                 <a sec:authorize="!isAuthenticated()" th:href="@{/login}">
-                    <button>Log-in</button>
+                    <button class="btn btn-hover color-8">Log-in</button>
                 </a>
                 <a sec:authorize="isAuthenticated()">
                     <form th:action="@{/logout}" th:method="post">
-                        <button>Logout</button>
+                        <button class="btn btn-hover color-8">Logout</button>
                     </form>
                 </a>
 <!--                <a th:href="@{/about-us}">-->
@@ -55,14 +55,19 @@
 
 
 <!-- ======== Footer ========= -->
-<footer th:fragment="footer">
-    <hr>
-    <ul>
-        <li>Contact Us</li>
-        <li>Customer Service</li>
-        <li>Partnerships</li>
-        <li>Employment</li>
-    </ul>
+<footer th:fragment="footer" class="footer">
+    <div class="container p-0 m-0 w-100 justify-content-evenly">
+        <div class="m-0 w-100 d-flex p-0 justify-content-between">
+            <div class="d-flex justify-content-center align-items-center p-0 m-0">
+                <h6 class="p-0 m-0"><a href="https://github.com/evanwilliamsC137/springblog" class="nav-link p-0 m-0" target="_blank"><i class="fa fa-github fa-lg"></i> Repository</a></h6>
+            </div>
+            <div class="d-flex justify-content-center align-items-center p-0 m-0">
+                <div class="container facebook-800-text p-0 m-0">
+                    <h6>For educational purposes only.</h6>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
 </body>
 </html>

@@ -28,11 +28,6 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/search")
-    public String getSearchForm() {
-        return "search/index";
-    }
-
     @PostMapping("/search")
     public String makeSearch(Model model, @RequestParam(name = "query") String query) {
         List<Post> searchResults;
